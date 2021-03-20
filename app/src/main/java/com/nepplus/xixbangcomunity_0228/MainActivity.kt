@@ -1,5 +1,6 @@
 package com.nepplus.xixbangcomunity_0228
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.nepplus.xixbangcomunity_0228.adapters.RoomAdapter
@@ -33,6 +34,19 @@ class MainActivity : AppCompatActivity() {
         mRoomAdapter = RoomAdapter(this, R.layout.room_list_item, mRooms)
 
         roomListView.adapter = mRoomAdapter
+
+        roomListView.setOnItemLongClickListener { parent, view, position, id ->
+
+            val clickedRoom = mRooms[position]
+
+            val myIntent = Intent(this, ViewRoomActivity::class.java)
+
+            myIntent.putExtra("roomInfo", clickedRoom)
+
+
+
+
+        }
 
     }
 }
