@@ -2,12 +2,16 @@ package com.nepplus.xixbangcomunity_0228
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.nepplus.xixbangcomunity_0228.adapters.RoomAdapter
 import com.nepplus.xixbangcomunity_0228.datas.Room
+import kotlinx.android.synthetic.main.activity_main.*
 import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
     val mRooms = ArrayList<Room>()
+
+    lateinit var mRoomAdapter : RoomAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +29,10 @@ class MainActivity : AppCompatActivity() {
         mRooms.add(Room(4000, "서울시 중구", 9, "동대문구 2층 방입니다."))
         mRooms.add(Room(4000, "서울시 중구", 15, "동대문구 2층 방입니다."))
         mRooms.add(Room(4000, "서울시 중구", 1, "동대문구 2층 방입니다."))
+
+        mRoomAdapter = RoomAdapter(this, R.layout.room_list_item, mRooms)
+
+        roomListView.adapter = mRoomAdapter
 
     }
 }
